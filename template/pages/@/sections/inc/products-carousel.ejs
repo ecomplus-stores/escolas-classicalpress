@@ -1,4 +1,10 @@
-<% if (Array.isArray(opt.items) && opt.items.length) {
+<% 
+const deny_sku = [
+"COD_ITEM6165", "COD_ITEM5406", "COD_ITEM5449", "COD_ITEM5930", "COD_ITEM7174", "COD_ITEM7173", "COD_ITEM7172", "COD_ITEM6099", "COD_ITEM5795", "COD_ITEM7175"
+];
+const allow_sku = [];
+
+if (Array.isArray(opt.items) && opt.items.length) {
   const title = opt.title ||
     (opt.collection && opt.collection.name) ||
     _.dictionary('popularProducts')
@@ -16,36 +22,54 @@
       opt.items[i] = t
     }
   }
+
+  if(allow_sku.length > 0){
+    opt.items = opt.items.filter(el => allow_sku.includes(el.sku))  
+  }
+  if(deny_sku.length > 0){
+    opt.items = opt.items.filter(el => !deny_sku.includes(el.sku))
+  }  
+  
+  opt.items = opt.items.filter(el => el.available && _.ecomUtils.inStock(el))
   %>
-
-  <section
-    class="products-carousel"
-    data-size="<%= opt.items.length %>"
-    <% if (opt.collection) { %>
-      data-collection-id="<%= opt.collection._id %>"
-    <% } %>
-    data-title="<%= title %>"
-  >
-    <div class="d-flex justify-content-between align-items-center">
-      <% if (!opt.headless) { %>
-        <h4 class="products-carousel__title font-weight-700">
-          <%= title %>
-        </h4>
+  
+  <% if (opt.items.length > 0) { %>
+    <section
+      class="products-carousel"
+      data-size="<%= opt.items.length %>"
+      <% if (opt.collection) { %>
+        data-collection-id="<%= opt.collection._id %>"
       <% } %>
-
+      data-title="<%= title %>"
+    >
+      <div class="d-flex justify-content-between align-items-center">
+        <% if (!opt.headless) { %>
+          <h4 class="products-carousel__title font-weight-700">
+            <%= title %>
+          </h4>
+        <% } %>
+  
+        <% if (opt.title || opt.collection) { %>
+          <% if (link) { %>
+            <a href="<%= link %>" class="d-block font-weight-600">
+              Ver Todos
+            </a>
+          <% } %>
+        <% } %>
+      </div>
+  
+      <ul class="ul__slides products-carousel__list">
+        <% for (let i = 0; i < opt.items.length; i++) { %>
+          <li class="ul__slide products-carousel__item">
+            <%- await include('@/sections/inc/product-item', {
+              _, opt: { item: opt.items[i] }
+            }) %>
+          </li>
+        <% } %>
+      </ul>
+  
       
-    </div>
-
-    <ul class="ul__slides products-carousel__list">
-      <% for (let i = 0; i < opt.items.length; i++) { %>
-        <li class="ul__slide products-carousel__item">
-          <%- await include('@/sections/inc/product-item', {
-            _, opt: { item: opt.items[i] }
-          }) %>
-        </li>
-      <% } %>
-    </ul>
-
-    
-  </section>
-<% } %>
+    </section>
+    <% } %>
+  <% } %>
+  

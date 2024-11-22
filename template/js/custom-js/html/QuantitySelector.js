@@ -32,6 +32,7 @@ export default {
     buyText: String,
     kitProductId: String,
     kitName: String,
+    kitTags: Array,
     kitPrice: Number,
     canAddToCart: {
       type: Boolean,
@@ -134,11 +135,37 @@ export default {
             variation_id: item.variation_id,
             quantity: this.selectedQnts[item._id]
           }))
+          console.log(this.kitTags)
+          let discount = 0
+          let discountTxt = ""
+          if(this.kitTags){
+            this.kitTags.forEach(item => {
+              if(item.includes('desconto')){
+                discount = item.split('-')[1] / 100
+                discountTxt = item.split('-')[1] + '% OFF'
+              }
+            })
+          }
+          
           this.items.forEach(item => {
+            console.log('item',item)
             const quantity = this.selectedQnts[item._id]
             if (quantity > 0) {
               const newItem = { ...item, quantity }
-              delete newItem.customizations
+              if(discount != 0){
+                console.log('discount')
+                newItem.customizations = [{
+                  _id: '166040173161016952100000',
+                  label: 'Desconto',
+                  add_to_price: {
+                    type: `fixed`,
+                    addition: (newItem.price * discount) * -1,
+                  },
+                  option: { text: discountTxt }
+                }]
+              }
+              console.log(newItem.customizations)
+              console.log(newItem)
               if (this.kitProductId) {
                 // newItem.kit_product = {
                 //   _id: this.kitProductId,
@@ -168,8 +195,16 @@ export default {
   },
 
   created () {
+
+    this.items.forEach(item => {
+      if(!item.min_quantity){
+        this.changeQnt(item,1)
+      }
+      
+    })
+    
     if (this.max < this.items.length) {
-      this.items.forEach(item => this.changeQnt(item))
+      this.items.forEach(item =>this.changeQnt(item))
     }
   }
 }

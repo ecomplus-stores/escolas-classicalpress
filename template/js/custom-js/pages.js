@@ -1,4 +1,10 @@
+window.deny_sku = [
+  "COD_ITEM6165", "COD_ITEM5406", "COD_ITEM5449", "COD_ITEM5930", "COD_ITEM7174", "COD_ITEM7173", "COD_ITEM7172", "COD_ITEM6099", "COD_ITEM5795", "COD_ITEM7175"
+];
+window.allow_sku = [];
+
 /*!
+
  * Simple jQuery Equal Heights
  *
  * Copyright (c) 2013 Matt Banks
