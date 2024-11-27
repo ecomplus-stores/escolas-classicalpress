@@ -38,56 +38,16 @@
       "shuffle": false,
       "limit": 12,
       "page": 1,
-      "collection_id": "67446a5ab779d771795f7650:collections:Currículo Base Infantil 4:/curriculo-base-infantil-4",
-      "title": "Currículo Base - Infantil 4"
+      "collection_id": "661838d70fc534303df97046:categories:CLASSICAL CONVERSATIONS :/classical-conversations-",
+      "title": "Classical Press + CC"
     },
     {
       "type": "collection-shelf",
       "shuffle": false,
       "limit": 12,
       "page": 1,
-      "collection_id": "67446b01b779d771795f7811:collections:Currículo Base Infantil 5:/curriculo-base-infantil-5",
-      "title": "Currículo Base - Infantil 5"
-    },
-    {
-      "type": "collection-shelf",
-      "shuffle": false,
-      "limit": 12,
-      "page": 1,
-      "collection_id": "67446d45b779d771795f7d88:collections:Currículo Base - 1º Ano:/curriculo-base---1-ano",
-      "title": "Currículo Base - 1º Ano"
-    },
-    {
-      "type": "collection-shelf",
-      "shuffle": false,
-      "limit": 12,
-      "page": 1,
-      "collection_id": "6744730fb779d771795f89b1:collections:Currículo Base - 2º Ano:/curriculo-base---2-ano",
-      "title": "Currículo Base - 2º Ano"
-    },
-    {
-      "type": "collection-shelf",
-      "shuffle": false,
-      "limit": 12,
-      "page": 1,
-      "collection_id": "67447405b779d771795f8b17:collections:Currículo Base - 3º Ano:/curriculo-base---3-ano",
-      "title": "Currículo Base - 3º Ano"
-    },
-    {
-      "type": "collection-shelf",
-      "shuffle": false,
-      "limit": 12,
-      "page": 1,
-      "collection_id": "674475abb779d771795f9058:collections:Currículo Base - 4º Ano:/curriculo-base---4-ano",
-      "title": "Currículo Base - 4º Ano"
-    },
-    {
-      "type": "collection-shelf",
-      "shuffle": false,
-      "limit": 12,
-      "page": 1,
-      "collection_id": "674475ddb779d771795f90e7:collections:Currículo Base - 5º Ano:/curriculo-base---5-ano",
-      "title": "Currículo Base - 5º Ano"
+      "collection_id": "66182a750fc534303df951b1:categories:EDUCAÇÃO CRISTÃ:/educacao-crista",
+      "title": "Educação"
     }
   ]
 }
