@@ -125,7 +125,7 @@ import {
   
       shippingServicesFinal () {
         return this.shippingServices.filter(service =>
-          (service.app_id === 1253 && (service.service_code == '7070' || service.service_code == '5050' || service.service_code == '20133' || service.service_code == '6060')) || (service.app_id !== 1253)
+          (service.app_id === 1253 && service.service_code == '7070')
         )
       },
   
@@ -273,15 +273,15 @@ import {
   
       setSelectedService (i) {
         if (this.canSelectServices) {
-          this.$emit('select-service', this.shippingServices[i])
+          this.$emit('select-service', this.shippingServicesFinal[i])
           this.selectedService = i
           const eventLayer = window.dataLayer.find(({event}) => event === 'eec.checkout')
           window.dataLayer.push({
             event: 'add_shipping_info',
             ecommerce: {
               currency: 'BRL',
-              shipping_method: this.shippingServices[i] && this.shippingServices[i].label,
-              value: this.shippingServices[i] && this.shippingServices[i].shipping_line && this.shippingServices[i].shipping_line.total_price,
+              shipping_method: this.shippingServicesFinal[i] && this.shippingServicesFinal[i].label,
+              value: this.shippingServicesFinal[i] && this.shippingServicesFinal[i].shipping_line && this.shippingServicesFinal[i].shipping_line.total_price,
               items: eventLayer && eventLayer.ecommerce && eventLayer.ecommerce.checkout && eventLayer.ecommerce.checkout.products
             }
           })
