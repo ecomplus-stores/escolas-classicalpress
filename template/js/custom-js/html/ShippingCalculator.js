@@ -125,7 +125,9 @@ import {
   
       shippingServicesFinal () {
         return this.shippingServices.filter(service =>
-          (service.app_id === 1253 && service.service_code == '7070')
+          this.shippingServices = this.shippingServices.filter(service =>
+            ["5151","5252"].includes(service.service_code)
+          )
         )
       },
   
