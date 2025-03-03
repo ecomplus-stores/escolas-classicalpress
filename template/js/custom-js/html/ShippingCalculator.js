@@ -124,11 +124,11 @@ import {
       },
   
       shippingServicesFinal () {
-        return this.shippingServices.filter(service =>
-          this.shippingServices = this.shippingServices.filter(service =>
-            ["5151","5252"].includes(service.service_code)
-          )
+       
+        return this.shippingServices = this.shippingServices.filter(service =>
+          ["5151","5252"].includes(service.service_code)
         )
+        
       },
   
       productionDeadline () {
