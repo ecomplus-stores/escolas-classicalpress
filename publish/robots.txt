@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://escolasclassicalpress.web.app/sitemap.xml
