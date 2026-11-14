@@ -76,6 +76,8 @@ jobs:
       - name: Run partial build
         env:
           CHANGED_FILES: ${{ steps.changed_files.outputs.all }}
+          # Node 20 dual-stack connect attempts time out (ETIMEDOUT) under the parallel prerender load
+          NODE_OPTIONS: --no-network-family-autoselection
         run: |
           IS_ECOMPLUS_CD=$(node -p "const f = JSON.parse('${CHANGED_FILES}'); f.length === 1 && f[0] === '.ecomplus.cd.json'");
           if [ $IS_ECOMPLUS_CD != false ] && [ -f .bundles.json ] && [ -f .deploy/publish/storefront.js ]; then
